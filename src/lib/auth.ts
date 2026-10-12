@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
-const mongoUrl = process.env.MONGO_DB_URL;
+const mongoUrl = process.env.MONGO_DB_URL as string ;
 
 if (!mongoUrl) {
   throw new Error("MONGO_DB_URL is missing in .env.local");

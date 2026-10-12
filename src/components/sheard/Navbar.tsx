@@ -4,7 +4,7 @@ import { Button, Dropdown, Label } from "@heroui/react";
 import { useEffect, useState } from "react";
 import { ICategoryDataType } from "@/types/allDataType";
 import Link from "next/link";
-import { getCategoryData } from "@/lib/allDataFetch";
+import { getCategoriesData } from "@/lib/allDataFetch";
 import { redirect, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
@@ -20,7 +20,7 @@ export default function Navbar() {
       dateStyle: "full",
     });
     const CategoryData = async () => {
-      const data = await getCategoryData();
+      const data = await getCategoriesData();
       setCategoryData(data);
     };
     CategoryData();
