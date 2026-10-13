@@ -1,3 +1,4 @@
+
 import {
   ICategoryDataType,
   IProductDataType,
@@ -16,11 +17,19 @@ async function fetchAPI<T>(endpoint: string): Promise<T> {
 
   if (!res.ok) {
     throw new Error(
-      `API request failed: ${res.status} ${res.statusText}`
+      `API request failed: ${res.status} ${res.statusText}`,
     );
   }
 
-  return res.json();
+  const result = await res.json();
+
+  // API যদি { data: [...] } আকারে ডেটা দেয়
+  if (result && Array.isArray(result.data)) {
+    return result.data as T;
+  }
+
+  // API যদি সরাসরি array দেয়
+  return result as T;
 }
 
 export async function getCategoriesData(): Promise<ICategoryDataType[]> {
@@ -30,3 +39,4 @@ export async function getCategoriesData(): Promise<ICategoryDataType[]> {
 export async function getProductsData(): Promise<IProductDataType[]> {
   return fetchAPI<IProductDataType[]>("products");
 }
+

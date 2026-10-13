@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { Button } from "@heroui/react";
 
@@ -13,7 +14,7 @@ export default function NotFound() {
           🧺
         </div>
 
-        {/* 404 */}
+        {/* 404 Error */}
         <div className="mt-6">
           <p className="text-6xl font-extrabold tracking-tight text-[#05893E] sm:text-8xl">
             404
@@ -31,18 +32,24 @@ export default function NotFound() {
           </p>
         </div>
 
-        {/* Buttons */}
+        {/* Back Button */}
         <div className="mt-8 flex flex-col justify-center gap-3 min-[400px]:flex-row">
-
           <Button
             onPress={() => router.back()}
-            className="h-11 w-full rounded-lg border-gray-300 bg-white px-6 font-semibold text-gray-700 transition-colors hover:bg-gray-50 min-[400px]:w-auto"
+            className="h-11 w-full rounded-lg border border-gray-300 bg-white px-6 font-semibold text-gray-700 transition-colors hover:bg-gray-50 min-[400px]:w-auto"
           >
             ← আগের পৃষ্ঠায় ফিরে যান
           </Button>
+
+          <Button
+            onPress={() => router.push("/")}
+            className="h-11 w-full rounded-lg bg-[#05893E] px-6 font-semibold text-white transition-colors hover:bg-[#047532] min-[400px]:w-auto"
+          >
+            হোম পেজে ফিরে যান
+          </Button>
         </div>
 
-        {/* Footer Note */}
+        {/* Footer */}
         <div className="mt-8 border-t border-gray-100 pt-5">
           <p className="text-sm text-gray-400">
             <span className="font-semibold text-[#05893E]">
